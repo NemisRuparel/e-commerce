@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shop smartwatches watches at ChronoElite">
-    <meta name="keywords" content="smartwatches watches, timepieces, shop watches">
-    <title>ChronoElite - Shop</title>
+    <meta name="description" content="View your cart at ChronoElite">
+    <meta name="keywords" content="cart, ChronoElite, watches">
+    <title>ChronoElite - Cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
@@ -148,94 +148,49 @@
         .menu-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
-        .shop {
+        .cart {
             padding: 120px 0 80px;
             background: linear-gradient(135deg, var(--bg), var(--card-bg));
         }
-        .shop-header {
-            margin-bottom: 50px;
+        .cart-header {
             text-align: center;
+            margin-bottom: 40px;
         }
-        .shop-title {
+        .cart-title {
             font-size: 3rem;
             font-weight: 800;
             background: linear-gradient(45deg, var(--accent), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 20px;
         }
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        .filter-select, .search-bar {
-            padding: 12px 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--accent);
-            border-radius: 25px;
-            color: var(--text);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 200px;
-        }
-        .search-bar {
-            width: 300px;
-            outline: none;
-        }
-        .filter-select:hover, .search-bar:hover {
-            border-color: var(--secondary);
-            box-shadow: 0 0 10px var(--shadow);
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px var(--shadow);
-            position: relative;
-        }
-        .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px var(--shadow);
-        }
-        .product-image img {
+        .cart-table {
             width: 100%;
-            height: 320px;
-            object-fit: cover;
-            transition: var(--transition);
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
         }
-        .product-card:hover .product-image img {
-            transform: scale(1.1);
-        }
-        .product-info {
-            padding: 25px;
+        .cart-table th, .cart-table td {
+            padding: 20px;
             text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
-        .product-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--accent);
+        .cart-table th {
+            background: var(--accent);
+            color: var(--bg);
             font-weight: 600;
         }
-        .product-price {
-            font-size: 1.3rem;
-            color: var(--text);
-            font-weight: 500;
-            margin-bottom: 15px;
+        .cart-table img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
         }
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 10px 20px;
             background: var(--accent);
             color: var(--bg);
             text-decoration: none;
@@ -262,26 +217,18 @@
         .btn:hover {
             box-shadow: 0 5px 15px var(--shadow);
         }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 50px;
+        .btn-remove {
+            background: #e74c3c;
         }
-        .page-btn {
-            padding: 12px 20px;
-            background: var(--card-bg);
-            color: var(--text);
-            border: 1px solid var(--accent);
-            border-radius: 25px;
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
+        .btn-remove:hover {
+            background: #c0392b;
         }
-        .page-btn:hover,
-        .page-btn.active {
-            background: var(--accent);
-            color: var(--bg);
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
         }
         .footer {
             background: var(--card-bg);
@@ -318,11 +265,6 @@
             padding-top: 20px;
             border-top: 1px solid rgba(0,0,0,0.1);
         }
-        @media (max-width: 1024px) {
-            .shop-title {
-                font-size: 2.5rem;
-            }
-        }
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -349,88 +291,53 @@
             .nav-menu li {
                 margin: 0;
             }
-            .filters {
-                flex-direction: column;
-                align-items: center;
-            }
-            .search-bar, .filter-select {
-                width: 100%;
-                max-width: 300px;
+            .cart-table {
+                display: block;
+                overflow-x: auto;
             }
         }
         @media (max-width: 480px) {
-            .shop-title {
+            .cart-title {
                 font-size: 2rem;
             }
-            .products-grid {
-                grid-template-columns: 1fr;
+            .cart-table th, .cart-table td {
+                padding: 10px;
+            }
+            .cart-table img {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
 </head>
 <body>
     <?php
-    // Database Connection
     $conn = mysqli_connect("localhost", "root", "", "chronoelite");
     if (!$conn) {
         die("Connection failed: " . mysqli_error($conn));
     }
     mysqli_select_db($conn, "chronoelite");
 
-    // Handle Add to Cart
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
-        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
-                $user_id = mysqli_real_escape_string($conn, $_SESSION['user_id']);
-                $product_id = mysqli_real_escape_string($conn, $_POST['product_id']);
-                $query = "INSERT INTO cart (user_id, product_id) VALUES ('$user_id', '$product_id')";
-                if (mysqli_query($conn, $query)) {
-                    $cart_message = "Product added to cart!";
-                } else {
-                    $cart_message = "Error adding to cart: " . mysqli_error($conn);
-                }
-            } else {
-                $cart_message = "User session error. Please log in again.";
-                header("Location: login.php");
-                exit;
-            }
-        } else {
-            header("Location: login.php");
-            exit;
-        }
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+        header("Location: login.php");
+        exit;
     }
 
-    // Pagination and Filtering
-    $itemsPerPage = 6;
-    $currentPage = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-    $category = isset($_GET['category']) ? mysqli_real_escape_string($conn, $_GET['category']) : '';
-    $sort = isset($_GET['sort']) ? $_GET['sort'] : '';
-    $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, strtolower(trim($_GET['search']))) : '';
-
-    // Build SQL Query
-    $query = "SELECT * FROM products WHERE 1=1";
-    if ($search) {
-        $query .= " AND LOWER(name) LIKE '%$search%'";
-    }
-    if ($category) {
-        $query .= " AND category='$category'";
-    }
-    if ($sort === 'low-high') {
-        $query .= " ORDER BY price ASC";
-    } elseif ($sort === 'high-low') {
-        $query .= " ORDER BY price DESC";
+    // Handle Remove from Cart
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_cart'])) {
+        $cart_id = $_POST['cart_id'];
+        $query = "DELETE FROM cart WHERE id='$cart_id'";
+        mysqli_query($conn, $query);
     }
 
-    // Get total items for pagination
+    // Fetch Cart Items
+    $user_id = $_SESSION['user_id'];
+    $query = "SELECT c.id AS cart_id, p.name, p.price, p.image, c.quantity 
+              FROM cart c 
+              JOIN products p ON c.product_id = p.id 
+              WHERE c.user_id='$user_id'";
     $result = mysqli_query($conn, $query);
-    $totalFilteredItems = mysqli_num_rows($result);
-    $totalFilteredPages = ceil($totalFilteredItems / $itemsPerPage);
-    $currentPage = min($currentPage, max(1, $totalFilteredPages));
-
-    // Add pagination to query
-    $startIndex = ($currentPage - 1) * $itemsPerPage;
-    $query .= " LIMIT $startIndex, $itemsPerPage";
-    $result = mysqli_query($conn, $query);
+    $total = 0;
     ?>
 
     <header class="header">
@@ -444,13 +351,8 @@
                         <li><a href="collections.php">Collections</a></li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="contact.php">Contact</a></li>
-                        <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
-                            <li><a href="cart.php">Cart</a></li>
-                            <li><a href="logout.php">Logout</a></li>
-                        <?php else: ?>
-                            <li><a href="login.php">Login</a></li>
-                            <li><a href="signup.php">Signup</a></li>
-                        <?php endif; ?>
+                        <li><a href="cart.php">Cart</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </nav>
                 <button class="menu-toggle">
@@ -465,65 +367,48 @@
         </div>
     </header>
 
-    <section class="shop">
+    <section class="cart">
         <div class="container">
-            <div class="shop-header">
-                <h1 class="shop-title">Explore Our Watches</h1>
-                <div class="filters">
-                    <input type="text" class="search-bar" placeholder="Search watches..." value="<?php echo htmlspecialchars($search); ?>">
-                    <select class="filter-select sort-filter">
-                        <option value="">Sort by Price</option>
-                        <option value="low-high" <?php echo $sort === 'low-high' ? 'selected' : ''; ?>>Low to High</option>
-                        <option value="high-low" <?php echo $sort === 'high-low' ? 'selected' : ''; ?>>High to Low</option>
-                    </select>
-                    <select class="filter-select category-filter">
-                        <option value="">All Categories</option>
-                        <option value="men" <?php echo $category === 'men' ? 'selected' : ''; ?>>Men</option>
-                        <option value="women" <?php echo $category === 'women' ? 'selected' : ''; ?>>Women</option>
-                        <option value="smartwatches" <?php echo $category === 'smartwatches' ? 'selected' : ''; ?>>Smartwatches</option>
-                    </select>
-                </div>
+            <div class="cart-header">
+                <h1 class="cart-title">Your Cart</h1>
             </div>
-
-            <?php if (isset($cart_message)) echo "<p style='text-align: center; color: var(--accent);'>$cart_message</p>"; ?>
-            <div class="products-grid">
-                <?php
-                if (mysqli_num_rows($result) > 0) {
-                    while ($product = mysqli_fetch_array($result)) {
-                        echo "
-                            <div class='product-card' data-category='{$product['category']}'>
-                                <div class='product-image'>
-                                    <img src='{$product['image']}' alt='{$product['name']}'>
-                                </div>
-                                <div class='product-info'>
-                                    <h3 class='product-title'>{$product['name']}</h3>
-                                    <p class='product-price'>₹" . number_format($product['price'], 2) . "</p>
-                                    <form method='POST' style='display: inline;'>
-                                        <input type='hidden' name='product_id' value='{$product['id']}'>
-                                        <button type='submit' name='add_to_cart' class='btn'>Add to Cart</button>
+            <?php if (mysqli_num_rows($result) > 0): ?>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($item = mysqli_fetch_array($result)): ?>
+                            <?php
+                            $item_total = $item['price'] * $item['quantity'];
+                            $total += $item_total;
+                            ?>
+                            <tr>
+                                <td><img src="<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>"></td>
+                                <td><?php echo $item['name']; ?></td>
+                                <td>₹<?php echo number_format($item['price'], 2); ?></td>
+                                <td><?php echo $item['quantity']; ?></td>
+                                <td>₹<?php echo number_format($item_total, 2); ?></td>
+                                <td>
+                                    <form method="POST" style="display: inline;">
+                                        <input type="hidden" name="cart_id" value="<?php echo $item['cart_id']; ?>">
+                                        <button type="submit" name="remove_from_cart" class="btn btn-remove">Remove</button>
                                     </form>
-                                </div>
-                            </div>
-                        ";
-                    }
-                } else {
-                    echo "<p style='text-align: center; font-size: 1.2rem;'>No products found matching your criteria.</p>";
-                }
-                ?>
-            </div>
-
-            <?php if ($totalFilteredPages > 1): ?>
-            <div class="pagination">
-                <?php if ($currentPage > 1): ?>
-                    <a href="?page=<?php echo $currentPage - 1; ?>&sort=<?php echo $sort; ?>&category=<?php echo $category; ?>&search=<?php echo $search; ?>" class="page-btn">Previous</a>
-                <?php endif; ?>
-                <?php for ($i = 1; $i <= $totalFilteredPages; $i++): ?>
-                    <a href="?page=<?php echo $i; ?>&sort=<?php echo $sort; ?>&category=<?php echo $category; ?>&search=<?php echo $search; ?>" class="page-btn <?php echo $i === $currentPage ? 'active' : ''; ?>"><?php echo $i; ?></a>
-                <?php endfor; ?>
-                <?php if ($currentPage < $totalFilteredPages): ?>
-                    <a href="?page=<?php echo $currentPage + 1; ?>&sort=<?php echo $sort; ?>&category=<?php echo $category; ?>&search=<?php echo $search; ?>" class="page-btn">Next</a>
-                <?php endif; ?>
-            </div>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+                <div class="total">Total: ₹<?php echo number_format($total, 2); ?></div>
+            <?php else: ?>
+                <p style="text-align: center; font-size: 1.2rem;">Your cart is empty.</p>
             <?php endif; ?>
         </div>
     </section>
@@ -563,7 +448,7 @@
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_theme'])) {
         $_SESSION['theme'] = $theme === 'dark' ? 'light' : 'dark';
-        header("Location: shop.php" . (isset($_SERVER['QUERY_STRING']) ? "?" . $_SERVER['QUERY_STRING'] : ""));
+        header("Location: cart.php");
         exit;
     }
     mysqli_close($conn);
@@ -572,9 +457,6 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
-        const sortFilter = document.querySelector('.sort-filter');
-        const categoryFilter = document.querySelector('.category-filter');
-        const searchBar = document.querySelector('.search-bar');
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
@@ -586,21 +468,6 @@
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             });
-        });
-
-        function updateURL() {
-            const url = new URL(window.location);
-            url.searchParams.set('sort', sortFilter.value);
-            url.searchParams.set('category', categoryFilter.value);
-            url.searchParams.set('search', searchBar.value);
-            url.searchParams.set('page', 1);
-            window.location = url;
-        }
-
-        sortFilter.addEventListener('change', updateURL);
-        categoryFilter.addEventListener('change', updateURL);
-        searchBar.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') updateURL();
         });
     </script>
 </body>
